@@ -7,7 +7,7 @@
 
 Name:           pecl-dbus
 Version:        0.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Extension for interaction with DBUS busses
 
 License:        PHP
@@ -26,8 +26,8 @@ and also act as a DBUS service.
 
 %prep
 %autosetup
-cat > pecl-dbus.ini << 'EOF'
-extension=pecl-dbus.so
+cat > dbus.ini << 'EOF'
+extension=dbus.so
 EOF
 
 
@@ -39,7 +39,7 @@ phpize
 %install
 mkdir -p %{buildroot}/usr/lib64/php/modules %{buildroot}/etc/php.d
 install -m 0755 modules/dbus.so %{buildroot}/usr/lib64/php/modules/dbus.so
-install -m 0644 pecl-dbus.ini %{buildroot}/etc/php.d/10-dbus.ini
+install -m 0644 dbus.ini %{buildroot}/etc/php.d/10-dbus.ini
 
 %files
 /usr/lib64/php/modules/dbus.so
