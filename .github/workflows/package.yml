@@ -1,0 +1,17 @@
+name: Package RPM
+
+on:
+  push:
+    tags:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./script.sh
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            rpmbuild/RPMS/x86_64/pecl-dbus-*.rpm
+            rpmbuild/SRPMS/pecl-dbus-*.src.rpm
